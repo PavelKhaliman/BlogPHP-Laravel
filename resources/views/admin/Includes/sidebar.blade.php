@@ -12,7 +12,7 @@
                     aria-label="Main navigation" data-accordion="false" id="navigation">
 
                     <li class="nav-item">
-                        <a href="{{route('main.index')}}" class="nav-link">
+                        <a href="{{route('blog.index')}}" class="nav-link">
                             <i class="bi bi-house-door"></i>
                             <p>Главная</p>
                         </a>

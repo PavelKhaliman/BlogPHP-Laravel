@@ -1,19 +1,30 @@
 <?php
 
-use App\Http\Controllers\Main\IndexController;
-
-use App\Http\Controllers\Main\ShowController;
+use App\Http\Controllers\Blog\IndexController as BlogIndexController;
+use App\Http\Controllers\Blog\ShowController as BlogShowController;
+use App\Http\Controllers\Main\IndexController as MainIndexController;
+use App\Http\Controllers\Cv\IndexController as CvIndexController;
+use App\Http\Controllers\MyProject\IndexController as MyProjectIndexController;
+use App\Http\Controllers\Contact\IndexController as ContactIndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
-    Route::get('/', IndexController::class) -> name('main.index');
-    Route::get('/{post}', ShowController::class) -> name('main.post.show');
+
+// Main page at root
+Route::get('/', MainIndexController::class)->name('main.index');
+
+// CV / MyProject / Contact pages
+Route::get('/cv', CvIndexController::class)->name('cv.index');
+Route::get('/my-project', MyProjectIndexController::class)->name('myproject.index');
+Route::get('/contact', ContactIndexController::class)->name('contact.index');
+
+// Blog routes under /blog
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('/', BlogIndexController::class) -> name('blog.index');
+    Route::get('/{post}', BlogShowController::class) -> name('blog.show');
 });
-
-
 
 Route::group(['namespace'=> 'App\Http\Controllers\Personal', 'prefix' =>'personal','middleware' => ['auth','personal']],function(){
 
@@ -31,6 +42,9 @@ Route::group(['namespace'=> 'App\Http\Controllers\Personal', 'prefix' =>'persona
         Route::delete('/{comment}', 'DeleteController')->name('personal.comment.delete');
     });
 });
+
+// Redirect /personal to /personal/main for convenience
+Route::redirect('/personal', '/personal/main');
 
 
 Route::group(['namespace'=> 'App\Http\Controllers\Admin', 'prefix' =>'admin','middleware' => ['auth','admin']],function(){
