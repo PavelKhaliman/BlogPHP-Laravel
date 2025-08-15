@@ -241,3 +241,29 @@ body {
   border-color: transparent;
 }
 .page-item.disabled .page-link { opacity: .5; pointer-events: none; }
+
+/* --------------------------------------------- */
+/* Mobile adaptations                             */
+/* --------------------------------------------- */
+@media (max-width: 768px) {
+  .header-inner { padding: 10px 0; }
+  .site-nav { gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .site-nav a { padding: 6px 8px; }
+  .btn { padding: 8px 12px; border-radius: 10px; }
+  .hero { padding: 48px 0; }
+}
+
+/* Grids on tablets/phones */
+@media (max-width: 600px) {
+  .container { width: min(1120px, 94%); }
+  .posts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
+  .cv-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .contact-icons { grid-template-columns: repeat(3, 1fr) !important; gap: 12px !important; }
+  .contact-icons a { width: 88px; height: 88px; }
+}
+
+/* Narrow phones */
+@media (max-width: 420px) {
+  .posts-grid { grid-template-columns: 1fr !important; }
+  .contact-icons { grid-template-columns: repeat(2, 1fr) !important; }
+}
