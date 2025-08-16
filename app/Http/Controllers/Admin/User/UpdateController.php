@@ -12,7 +12,14 @@ class UpdateController extends Controller
     {
         $data = $request->validated();
 
+        // Если пароль не передан, не трогаем его
+        if (empty($data['password'])) {
+            unset($data['password']);
+        } else {
+            $data['password'] = bcrypt($data['password']);
+        }
+
         $user->update($data);
-        return view('admin.user.show',compact('user'));
+        return redirect()->route('admin.user.show', $user->id)->with('status', 'Пользователь обновлен');
     }
 }
