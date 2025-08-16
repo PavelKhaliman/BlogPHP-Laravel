@@ -31,6 +31,13 @@
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
 
+                                <input type="text" class="form-control mt-3" name="subtitle" placeholder="Подзаголовок поста"
+                                       value="{{old('subtitle')}}"
+                                >
+                                @error('subtitle')
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+
                                 <div class="input-group mt-3">
                                     <span class="input-group-text">Добавить текст</span>
                                     <textarea class="form-control" aria-label="With textarea" name="content"

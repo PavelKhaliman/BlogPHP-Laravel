@@ -33,6 +33,7 @@
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Название</th>
+                                        <th scope="col">Подзаголовок</th>
                                         <th colspan="3" class="text-center">Действие</th>
 
                                     </tr>
@@ -42,6 +43,7 @@
                                     <tr class="align-middle">
                                         <td>{{$post->id}}</td>
                                         <td>{{$post->title}}</td>
+                                        <td>{{$post->subtitle}}</td>
                                         <td class="text-center"><a href="{{route('admin.post.show', $post->id)}}"><i class="bi bi-eye"></i></a></td>
                                         <td class="text-center"><a href="{{route('admin.post.edit', $post->id)}}" class="text-success">
                                                 <i class="bi bi-pencil"></i></a></td>

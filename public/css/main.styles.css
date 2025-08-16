@@ -90,6 +90,14 @@ body {
   border-color: #334155;
 }
 
+/* Read button tweaks for blog cards */
+.btn-read {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  text-decoration: none;
+}
+.btn-read:hover { text-decoration: none; }
+
 /* Fixed footer pinned to bottom and centered */
 .site-footer {
   position: fixed;
