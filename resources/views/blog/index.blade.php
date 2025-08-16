@@ -36,7 +36,7 @@
           @foreach($posts as $post)
             <article class="post-card" style="background: var(--bg-elev); border:1px solid var(--border); border-radius: 16px; overflow:hidden; box-shadow: var(--shadow); display:flex; flex-direction:column;">
               <a href="{{ route('blog.show', $post->id) }}" style="display:block;">
-                <img src="{{ asset('storage/' . $post->post_image) }}" alt="{{ $post->title }}" style="width:100%; height:180px; object-fit:cover; object-position:center; display:block;" />
+                <img src="{{ $post->image_url }}" alt="{{ $post->title }}" style="width:100%; height:180px; object-fit:cover; object-position:center; display:block;" />
               </a>
               <div style="padding: 14px 16px; display:flex; flex-direction:column; flex:1;">
                 <div class="small text-muted" style="color:var(--muted); font-size: 13px; margin-bottom: 6px;">{{ optional($post->created_at)->translatedFormat('F d, Y') }}</div>
