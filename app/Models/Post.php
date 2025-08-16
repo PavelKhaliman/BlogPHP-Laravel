@@ -17,4 +17,27 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
     }
+
+    /**
+     * Normalize stored image path to a relative path like `images/foo.jpg`.
+     */
+    public function setPostImageAttribute($value): void
+    {
+        if (is_string($value)) {
+            $clean = preg_replace('#^(?:public/)?storage/#', '', $value);
+            $this->attributes['post_image'] = ltrim($clean ?? '', '/');
+            return;
+        }
+        $this->attributes['post_image'] = $value;
+    }
+
+    /**
+     * Get public URL for the image using the storage symlink.
+     */
+    public function getImageUrlAttribute(): string
+    {
+        $p = (string)($this->attributes['post_image'] ?? '');
+        $p = ltrim(preg_replace('#^storage/#', '', $p), '/');
+        return asset('storage/'.$p);
+    }
 }
