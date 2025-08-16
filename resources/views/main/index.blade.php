@@ -27,6 +27,7 @@
           <a href="{{route('blog.index')}}">Blog</a>
           <a href="{{ route('cv.index') }}">CV</a>
           <a href="{{ route('myproject.index') }}">My Project</a>
+          <a href="{{ route('personal.main.index') }}">ЛК</a>
           <a href="{{ route('contact.index') }}" class="btn btn-outline">Contact</a>
         </nav>
       </div>
@@ -41,8 +42,8 @@
           </h1>
           
           <div class="cta">
-            <a class="btn btn-primary" href="#projects">Посмотреть проекты</a>
-            <a class="btn btn-ghost" href="#contact">Связаться</a>
+            <a class="btn btn-primary" href="{{ route('myproject.index') }}">Посмотреть проекты</a>
+            <a class="btn btn-ghost" href="{{ route('contact.index') }}">Связаться</a>
           </div>
         </div>
         <div class="hero-visual">
