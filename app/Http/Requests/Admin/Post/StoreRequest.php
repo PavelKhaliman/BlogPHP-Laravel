@@ -23,6 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'title'=>'required|string',
+            'subtitle'=>'required|string',
             'content'=>'required|string',
             'post_image'=>'required|file',
             'category_id'=>'required|integer|exists:categories,id',
@@ -36,6 +37,8 @@ class StoreRequest extends FormRequest
         return [
             'title.required' => 'это поле необходимо заполнить',
             'title.string' => 'данные должны соответствовать строке',
+            'subtitle.required' => 'это поле необходимо заполнить',
+            'subtitle.string' => 'данные должны соответствовать строке',
             'content.required' => 'это поле необходимо заполнить',
             'content.string' => 'данные должны соответствовать строке',
             'post_image.required' => 'это поле необходимо заполнить',
