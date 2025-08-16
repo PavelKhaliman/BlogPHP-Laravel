@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
-    use softDeletes;
+    use SoftDeletes;
 
     const ROLE_ADMIN = 0;
     const ROLE_READER = 1;
