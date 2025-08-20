@@ -8,17 +8,41 @@ use App\Http\Controllers\MyProject\IndexController as MyProjectIndexController;
 use App\Http\Controllers\Contact\IndexController as ContactIndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect()->route('main.index');
+})->middleware(['auth','signed','throttle:6,1'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('status', 'verification-link-sent');
+})->middleware(['auth','throttle:6,1'])->name('verification.send');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('status', 'verification-link-sent');
+})->middleware(['auth','throttle:6,1'])->name('verification.send');
 
 // Main page at root
 Route::get('/', MainIndexController::class)->name('main.index');
+
 
 // CV / MyProject / Contact pages
 Route::get('/cv', CvIndexController::class)->name('cv.index');
 Route::get('/my-project', MyProjectIndexController::class)->name('myproject.index');
 Route::get('/contact', ContactIndexController::class)->name('contact.index');
+
+// routes/web.php
+
 
 // Blog routes under /blog
 Route::group(['prefix' => 'blog'], function () {
@@ -26,7 +50,7 @@ Route::group(['prefix' => 'blog'], function () {
     Route::get('/{post}', BlogShowController::class) -> name('blog.show');
 });
 
-Route::group(['namespace'=> 'App\Http\Controllers\Personal', 'prefix' =>'personal','middleware' => ['auth','personal']],function(){
+Route::group(['namespace'=> 'App\Http\Controllers\Personal', 'prefix' =>'personal','middleware' => ['auth','personal','verified']],function(){
 
     Route::group(['namespace'=>'Main', 'prefix' =>'main'],function(){
         Route::get('/', 'IndexController')->name('personal.main.index');
@@ -47,7 +71,7 @@ Route::group(['namespace'=> 'App\Http\Controllers\Personal', 'prefix' =>'persona
 Route::redirect('/personal', '/personal/main');
 
 
-Route::group(['namespace'=> 'App\Http\Controllers\Admin', 'prefix' =>'admin','middleware' => ['auth','admin']],function(){
+Route::group(['namespace'=> 'App\Http\Controllers\Admin', 'prefix' =>'admin','middleware' => ['auth','admin','verified']],function(){
 
     Route::group(['namespace'=>'Main'],function(){
         Route::get('/', 'IndexController')->name('admin.main.index');

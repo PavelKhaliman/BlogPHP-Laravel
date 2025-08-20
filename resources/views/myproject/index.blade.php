@@ -1,32 +1,5 @@
-<!doctype html>
-<html lang="ru">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Project • PK-Website</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet" />
-
-    <link rel="stylesheet" href="/css/main.styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <div class="brand">
-          <span class="dot"></span>
-          <span class="brand-name"><a href="{{ route('main.index') }}">PK-Website</a></span>
-        </div>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="{{ route('login') }}">Login</a>
-          <a href="{{ route('blog.index') }}">Blog</a>
-          <a href="{{ route('cv.index') }}">CV</a>
-          <a href="{{ route('myproject.index') }}" aria-current="page">My Project</a>
-          <a href="{{ route('contact.index') }}" class="btn btn-outline">Contact</a>
-        </nav>
-      </div>
-    </header>
+@extends('layouts.main')
+@section('content')
 
     <main>
       <section class="container" style="padding: 48px 0 80px; max-width: 980px;">
@@ -90,15 +63,6 @@
         </div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <span>© <span id="year"></span> Pavel Khaliman</span>
-      </div>
-    </footer>
-
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  </body>
-</html>
+@endsection
 
 

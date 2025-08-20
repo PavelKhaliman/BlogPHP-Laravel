@@ -74,7 +74,8 @@ body {
 
 .btn { border: 1px solid transparent; border-radius: 12px; padding: 10px 14px; font-weight: 600; }
 .btn-primary { background: linear-gradient(135deg, var(--brand), #6ee7e6); color: #0b0f14; }
-.btn-outline { border-color: #2a3342; background: #111723; }
+.btn-outline { border-color: #2a3342; background: #111723; color: #ffffff; }
+.btn-outline:hover { color: #ffffff; }
 .btn-ghost { background: transparent; border-color: transparent; color: var(--muted); }
 .btn:hover { transform: translateY(-1px); }
 
