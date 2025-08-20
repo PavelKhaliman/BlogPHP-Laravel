@@ -21,6 +21,20 @@ services:
     networks:
       - laravel_network
 
+  # PerfectWorld (Go) сервис в той же сети
+  perfectworld:
+    image: golang:1.22-alpine
+    container_name: perfectworld
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ../PerfectWorld:/app:ro
+    command: sh -c "go run ./cmd/server"
+    expose:
+      - "8080"
+    networks:
+      - laravel_network
+
   # Nginx веб-сервер
   nginx:
     image: nginx:alpine
@@ -36,6 +50,7 @@ services:
       - ./certs:/etc/letsencrypt:ro
     depends_on:
       - app
+      - perfectworld
     networks:
       - laravel_network
 
