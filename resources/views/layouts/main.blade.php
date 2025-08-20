@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/main.styles.css" />
+    <link rel="stylesheet" href="{{ asset('css/main.styles.css') }}" />
   </head>
   <body>
     <header class="site-header">
