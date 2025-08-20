@@ -1,6 +1,6 @@
 <h1 align="center">PK-Website • BlogPHP-Laravel</h1>
 
-Небольшой сайт-портфолио на Laravel: главная, блог с постами, страница резюме (CV), проекты (My Project) и контакты. Аутентификация стандартная (Laravel UI), есть личный кабинет и админ-панель. Проект готов к запуску локально и в Docker.
+Небольшой сайт‑портфолио на Laravel: главная, блог, резюме (CV), проекты (My Project), контакты. Аутентификация (Laravel UI), личный кабинет и админ‑панель. Готов к запуску локально и в Docker.
 
 — Репозиторий: https://github.com/PavelKhaliman/BlogPHP-Laravel
 
@@ -19,8 +19,14 @@
 - `/personal/*` — личный кабинет (auth)
 - `/admin/*` — админка (auth + policy)
 
+## Возможности
+- Современный UI для главной/блога/страниц входа/регистрации
+- Загрузка изображений для постов (через `storage:link` и алиас в Nginx)
+- Подтверждение регистрации по email (email verification)
+- Оповещение в Telegram о новых регистрациях (через listener)
+- Готовые конфиги Nginx + Docker Compose + SSL (Let's Encrypt)
 
-```
+
 
 ## Лицензия
 MIT © Pavel Khaliman
