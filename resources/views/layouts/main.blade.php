@@ -27,7 +27,13 @@
           <a href="{{ route('cv.index') }}">CV</a>
           <a href="{{ route('myproject.index') }}">My Project</a>
           <a href="{{ route('personal.main.index') }}">ЛК</a>
-          <a href="{{ route('contact.index') }}" class="btn btn-outline">Contact</a>
+          <a href="{{ route('contact.index') }}">Contact</a>
+          <div class="dropdown">
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Other</button>
+            <ul class="dropdown-menu" role="menu" aria-label="Other">
+              <li><a href="/game">PW-ГШ</a></li>
+            </ul>
+          </div>
           @auth
   <form method="POST" action="{{ route('logout') }}" style="display:inline">
     @csrf
@@ -83,6 +89,31 @@
             }
           });
         });
+      })();
+
+      // Simple accessible dropdown for "Other"
+      (function () {
+        const dd = document.querySelector('.dropdown');
+        if (!dd) return;
+        const toggle = dd.querySelector('.dropdown-toggle');
+        const menu = dd.querySelector('.dropdown-menu');
+        if (!toggle || !menu) return;
+        const close = () => { dd.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); };
+        const open = () => { dd.classList.add('open'); toggle.setAttribute('aria-expanded','true'); };
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (dd.classList.contains('open')) close(); else open();
+        });
+        // Hide when pointer leaves dropdown area (after short delay to allow moving into menu)
+        let hideTimer;
+        dd.addEventListener('mouseleave', () => {
+          hideTimer = setTimeout(() => close(), 200);
+        });
+        dd.addEventListener('mouseenter', () => { if (hideTimer) clearTimeout(hideTimer); });
+        document.addEventListener('click', (e) => {
+          if (!dd.contains(e.target)) close();
+        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
       })();
     </script>
   </body>

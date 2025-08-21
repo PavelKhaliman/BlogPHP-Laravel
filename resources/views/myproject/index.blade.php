@@ -22,6 +22,17 @@
 
           <article class="post-card" style="background: var(--bg-elev); border:1px solid var(--border); border-radius: 16px; overflow:hidden; box-shadow: var(--shadow); display:flex; flex-direction:column; min-height: 260px;">
             <div style="padding: 14px 16px; display:flex; flex-direction:column; flex:1;">
+              <h2 style="margin:0 0 8px; font-size: 20px; line-height:1.2;">ГШ-созвездия</h2>
+              <p style="margin:0 0 12px; color:var(--muted); font-size: 14px;">Решение задачи в игре Perfect World для ГШ и сама игра(9 сфер) 
+                с привязкой к текущему сайту(GOleng)</p>
+              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:auto;">
+                <a class="btn btn-soft" target="_blank" rel="noopener" href="https://github.com/PavelKhaliman/PerfectWorld">Репозиторий</a>              
+              </div>
+            </div>
+          </article>
+
+          <article class="post-card" style="background: var(--bg-elev); border:1px solid var(--border); border-radius: 16px; overflow:hidden; box-shadow: var(--shadow); display:flex; flex-direction:column; min-height: 260px;">
+            <div style="padding: 14px 16px; display:flex; flex-direction:column; flex:1;">
               <h2 style="margin:0 0 8px; font-size: 20px; line-height:1.2;">Планировщик задач / TasksScheduler</h2>
               <p style="margin:0 0 12px; color:var(--muted); font-size: 14px;">Данный проект реализует функциональность планировщика задач. Планировщик хранит задачи; каждая из них содержит дату дедлайна и 
                 заголовок с комментарием, pадачи повторяются по заданному правилу 
