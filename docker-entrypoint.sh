@@ -20,9 +20,9 @@ if [ ! -f database/database.sqlite ]; then
 fi
 
 # Генерация ключа приложения если его нет
-if ! grep -q "APP_KEY=base64:" .env; then
+if ! grep -q "^APP_KEY=base64:" .env; then
     echo "🔑 Генерация ключа приложения..."
-    php artisan key:generate --no-interaction
+    php artisan key:generate --no-interaction --force
 fi
 
 # Очистка кэша

@@ -23,13 +23,13 @@ services:
 
   # PerfectWorld (Go) сервис в той же сети
   perfectworld:
-    image: alpine:3.20
+    image: golang:1.22-alpine
     container_name: perfectworld
     restart: unless-stopped
     working_dir: /app
     volumes:
-      - /root/perfectworld:/app:ro
-    command: ["/app/perfectworld"]
+      - ../PerfectWorld:/app:ro
+    command: sh -c "go run ./cmd/server"
     expose:
       - "8080"
     networks:
