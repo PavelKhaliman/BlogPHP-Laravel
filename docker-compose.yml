@@ -19,7 +19,10 @@ services:
       APP_DEBUG: false
       APP_URL: http://localhost
     networks:
-      - laravel_network
+      laravel_network:
+        aliases:
+          - app
+          - laravel_app
 
   # Nginx веб-сервер
   nginx:
